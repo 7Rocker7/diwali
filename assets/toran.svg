@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 70" preserveAspectRatio="none">
+  <defs>
+    <!-- Mango Leaf Gradient -->
+    <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2E7D32"/>
+      <stop offset="60%" stop-color="#1B5E20"/>
+      <stop offset="100%" stop-color="#003300"/>
+    </linearGradient>
+    <!-- Marigold Orange Gradient -->
+    <radialGradient id="marigoldOrange" cx="40%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#FFE082"/>
+      <stop offset="35%" stop-color="#FF9800"/>
+      <stop offset="75%" stop-color="#E65100"/>
+      <stop offset="100%" stop-color="#BF360C"/>
+    </radialGradient>
+    <!-- Marigold Yellow Gradient -->
+    <radialGradient id="marigoldYellow" cx="40%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#FFF9C4"/>
+      <stop offset="40%" stop-color="#FFD600"/>
+      <stop offset="85%" stop-color="#FFAB00"/>
+      <stop offset="100%" stop-color="#FF8F00"/>
+    </radialGradient>
+    <!-- Golden Bell Gradient -->
+    <linearGradient id="bellGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF59D"/>
+      <stop offset="40%" stop-color="#FFD700"/>
+      <stop offset="80%" stop-color="#FFA000"/>
+      <stop offset="100%" stop-color="#FF6F00"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Hanging Golden Cord -->
+  <path d="M0,8 Q150,22 300,8 Q450,22 600,8 Q750,22 900,8 Q1050,22 1200,8" fill="none" stroke="#FFD700" stroke-width="3" stroke-linecap="round"/>
+  <path d="M0,8 Q150,22 300,8 Q450,22 600,8 Q750,22 900,8 Q1050,22 1200,8" fill="none" stroke="#FF9800" stroke-width="1.2" stroke-dasharray="4,4"/>
+
+  <!-- Repeating Festive Flower & Mango Leaf Bunches -->
+  <!-- Repeat loop over 1200px width every 100px -->
+  <g id="toran-elements">
+    <!-- Leaf 1 -->
+    <path d="M50,14 C42,26 40,42 50,56 C60,42 58,26 50,14 Z" fill="url(#leafGrad)"/>
+    <path d="M150,18 C142,30 140,46 150,60 C160,46 158,30 150,18 Z" fill="url(#leafGrad)"/>
+    <path d="M250,14 C242,26 240,42 250,56 C260,42 258,26 250,14 Z" fill="url(#leafGrad)"/>
+    <path d="M350,18 C342,30 340,46 350,60 C360,46 358,30 350,18 Z" fill="url(#leafGrad)"/>
+    <path d="M450,14 C442,26 440,42 450,56 C460,42 458,26 450,14 Z" fill="url(#leafGrad)"/>
+    <path d="M550,18 C542,30 540,46 550,60 C560,46 558,30 550,18 Z" fill="url(#leafGrad)"/>
+    <path d="M650,14 C642,26 640,42 650,56 C660,42 658,26 650,14 Z" fill="url(#leafGrad)"/>
+    <path d="M750,18 C742,30 740,46 750,60 C760,46 758,30 750,18 Z" fill="url(#leafGrad)"/>
+    <path d="M850,14 C842,26 840,42 850,56 C860,42 858,26 850,14 Z" fill="url(#leafGrad)"/>
+    <path d="M950,18 C942,30 940,46 950,60 C960,46 958,30 950,18 Z" fill="url(#leafGrad)"/>
+    <path d="M1050,14 C1042,26 1040,42 1050,56 C1060,42 1058,26 1050,14 Z" fill="url(#leafGrad)"/>
+    <path d="M1150,18 C1142,30 1140,46 1150,60 C1160,46 1158,30 1150,18 Z" fill="url(#leafGrad)"/>
+
+    <!-- Marigold Flowers -->
+    <!-- X=0 -->
+    <circle cx="0" cy="8" r="14" fill="url(#marigoldOrange)"/>
+    <circle cx="0" cy="8" r="8" fill="url(#marigoldYellow)"/>
+    <!-- X=100 -->
+    <circle cx="100" cy="16" r="14" fill="url(#marigoldYellow)"/>
+    <circle cx="100" cy="16" r="8" fill="url(#marigoldOrange)"/>
+    <!-- X=200 -->
+    <circle cx="200" cy="16" r="14" fill="url(#marigoldOrange)"/>
+    <circle cx="200" cy="16" r="8" fill="url(#marigoldYellow)"/>
+    <!-- X=300 -->
+    <circle cx="300" cy="8" r="15" fill="url(#marigoldYellow)"/>
+    <circle cx="300" cy="8" r="9" fill="url(#marigoldOrange)"/>
+    <!-- X=400 -->
+    <circle cx="400" cy="16" r="14" fill="url(#marigoldOrange)"/>
+    <circle cx="400" cy="16" r="8" fill="url(#marigoldYellow)"/>
+    <!-- X=500 -->
+    <circle cx="500" cy="16" r="14" fill="url(#marigoldYellow)"/>
+    <circle cx="500" cy="16" r="8" fill="url(#marigoldOrange)"/>
+    <!-- X=600 -->
+    <circle cx="600" cy="8" r="15" fill="url(#marigoldOrange)"/>
+    <circle cx="600" cy="8" r="9" fill="url(#marigoldYellow)"/>
+    <!-- X=700 -->
+    <circle cx="700" cy="16" r="14" fill="url(#marigoldYellow)"/>
+    <circle cx="700" cy="16" r="8" fill="url(#marigoldOrange)"/>
+    <!-- X=800 -->
+    <circle cx="800" cy="16" r="14" fill="url(#marigoldOrange)"/>
+    <circle cx="800" cy="16" r="8" fill="url(#marigoldYellow)"/>
+    <!-- X=900 -->
+    <circle cx="900" cy="8" r="15" fill="url(#marigoldYellow)"/>
+    <circle cx="900" cy="8" r="9" fill="url(#marigoldOrange)"/>
+    <!-- X=1000 -->
+    <circle cx="1000" cy="16" r="14" fill="url(#marigoldOrange)"/>
+    <circle cx="1000" cy="16" r="8" fill="url(#marigoldYellow)"/>
+    <!-- X=1100 -->
+    <circle cx="1100" cy="16" r="14" fill="url(#marigoldYellow)"/>
+    <circle cx="1100" cy="16" r="8" fill="url(#marigoldOrange)"/>
+    <!-- X=1200 -->
+    <circle cx="1200" cy="8" r="14" fill="url(#marigoldOrange)"/>
+    <circle cx="1200" cy="8" r="8" fill="url(#marigoldYellow)"/>
+
+    <!-- Small Hanging Golden Bells at Peaks -->
+    <g transform="translate(300, 24)">
+      <line x1="0" y1="-12" x2="0" y2="4" stroke="#FFD700" stroke-width="1.5"/>
+      <path d="M-6,14 C-6,7 6,7 6,14 L7,17 L-7,17 Z" fill="url(#bellGrad)"/>
+      <circle cx="0" cy="19" r="2" fill="#FFA000"/>
+    </g>
+    <g transform="translate(600, 24)">
+      <line x1="0" y1="-12" x2="0" y2="4" stroke="#FFD700" stroke-width="1.5"/>
+      <path d="M-6,14 C-6,7 6,7 6,14 L7,17 L-7,17 Z" fill="url(#bellGrad)"/>
+      <circle cx="0" cy="19" r="2" fill="#FFA000"/>
+    </g>
+    <g transform="translate(900, 24)">
+      <line x1="0" y1="-12" x2="0" y2="4" stroke="#FFD700" stroke-width="1.5"/>
+      <path d="M-6,14 C-6,7 6,7 6,14 L7,17 L-7,17 Z" fill="url(#bellGrad)"/>
+      <circle cx="0" cy="19" r="2" fill="#FFA000"/>
+    </g>
+  </g>
+</svg>

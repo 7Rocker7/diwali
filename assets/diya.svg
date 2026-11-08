@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 80">
+  <defs>
+    <!-- Brass / Terracotta Gradient -->
+    <linearGradient id="diyaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE082"/>
+      <stop offset="25%" stop-color="#FFA000"/>
+      <stop offset="60%" stop-color="#E65100"/>
+      <stop offset="90%" stop-color="#BF360C"/>
+      <stop offset="100%" stop-color="#5D4037"/>
+    </linearGradient>
+    <!-- Diya Rim Gold Highlight -->
+    <linearGradient id="rimGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFD54F"/>
+      <stop offset="50%" stop-color="#FFF9C4"/>
+      <stop offset="100%" stop-color="#FFB300"/>
+    </linearGradient>
+    <!-- Oil Pool Gradient -->
+    <radialGradient id="oilGrad" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#FFF59D"/>
+      <stop offset="50%" stop-color="#FFB300"/>
+      <stop offset="100%" stop-color="#E65100"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Diya Pedestal Base -->
+  <ellipse cx="80" cy="74" rx="35" ry="5" fill="#3E2723" opacity="0.6"/>
+  <path d="M60,65 L100,65 L92,72 L68,72 Z" fill="#8D6E63"/>
+
+  <!-- Main Diya Body -->
+  <path d="M15,35 Q40,70 80,70 Q120,70 145,35 Q135,50 80,56 Q25,50 15,35 Z" fill="url(#diyaGrad)" stroke="#FFD54F" stroke-width="1.2"/>
+
+  <!-- Diya Interior / Oil Basin -->
+  <ellipse cx="80" cy="35" rx="65" ry="16" fill="url(#diyaGrad)"/>
+  <ellipse cx="80" cy="35" rx="55" ry="11" fill="url(#oilGrad)"/>
+
+  <!-- Diya Pointed Beak for Wick (left and center-front) -->
+  <path d="M74,32 C78,22 82,22 86,32 C84,34 76,34 74,32 Z" fill="#4E342E"/>
+
+  <!-- Ornamental Engravings / Filigree on Rim -->
+  <g fill="#FFF9C4" opacity="0.8">
+    <circle cx="45" cy="42" r="1.8"/>
+    <circle cx="55" cy="46" r="1.8"/>
+    <circle cx="68" cy="49" r="1.8"/>
+    <circle cx="80" cy="50" r="2.2"/>
+    <circle cx="92" cy="49" r="1.8"/>
+    <circle cx="105" cy="46" r="1.8"/>
+    <circle cx="115" cy="42" r="1.8"/>
+  </g>
+
+  <!-- Golden Trim Highlight -->
+  <path d="M15,35 Q80,56 145,35" fill="none" stroke="url(#rimGrad)" stroke-width="2"/>
+</svg>

@@ -132,51 +132,56 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 60px;
+  height: 38px;
   background-repeat: repeat-x;
   background-position: top center;
-  z-index: 10;
+  background-size: auto 38px;
+  z-index: 5;
   pointer-events: none;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.5));
 }
 
-/* Hanging Lanterns (Akash Kandil) */
+/* Hanging Lanterns (Akash Kandil) positioned neatly in side margins */
 .hanging-lantern {
   position: fixed;
   top: 0;
-  z-index: 9;
-  width: 70px;
+  z-index: 8;
+  width: 44px;
   pointer-events: none;
   animation: swingLantern 4s ease-in-out infinite alternate;
   transform-origin: top center;
-  filter: drop-shadow(0 10px 18px rgba(255, 153, 0, 0.4));
+  filter: drop-shadow(0 8px 16px rgba(255, 153, 0, 0.35));
 }
 
 .lantern-left {
-  left: 2.5%;
+  left: 14px;
 }
 
 .lantern-right {
-  right: 2.5%;
+  right: 14px;
   animation-delay: -2s;
 }
 
 @keyframes swingLantern {
-  0% { transform: rotate(-6deg); }
-  100% { transform: rotate(6deg); }
+  0% { transform: rotate(-5deg); }
+  100% { transform: rotate(5deg); }
 }
 
 /* ==========================================================================
-   TOP BAR & NAVIGATION CONTROLS
+   TOP BAR & NAVIGATION CONTROLS (Clean, fully unobstructed below toran)
    ========================================================================== */
 .top-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 24px;
-  margin-top: 20px;
+  padding: 10px 85px;
+  margin-top: 48px;
   position: relative;
   z-index: 20;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
 
 .festival-badge {
@@ -1160,14 +1165,15 @@ body {
 /* ==========================================================================
    RESPONSIVE MEDIA QUERIES
    ========================================================================== */
-@media (max-width: 768px) {
+@media (max-width: 960px) {
+  .hanging-lantern {
+    display: none; /* Safely hide lanterns on medium & small screens so no text/buttons are ever obscured */
+  }
   .top-nav {
+    padding: 10px 20px;
+    margin-top: 45px;
     flex-direction: column;
     gap: 12px;
-    padding: 12px 16px;
-  }
-  .hanging-lantern {
-    width: 48px;
   }
   .generator-form {
     grid-template-columns: 1fr;
@@ -1184,6 +1190,14 @@ body {
 }
 
 @media (max-width: 480px) {
+  .toran-garland {
+    height: 30px;
+    background-size: auto 30px;
+  }
+  .top-nav {
+    margin-top: 36px;
+    padding: 8px 12px;
+  }
   .diyas-grid {
     grid-template-columns: 1fr;
   }

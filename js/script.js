@@ -32,17 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const relightDiyasBtn = document.getElementById('relight-diyas-btn');
   const modalShareBtn = document.getElementById('modal-share-btn');
 
-  const githubModal = document.getElementById('github-modal');
-  const openGithubGuideBtn = document.getElementById('open-github-guide-btn');
-  const closeGithubBtn = document.getElementById('close-github-btn');
-  const dismissGithubModalBtn = document.getElementById('dismiss-github-modal-btn');
-
   const inputRecipient = document.getElementById('input-recipient');
   const inputSender = document.getElementById('input-sender');
   const inputPreset = document.getElementById('input-preset');
   const inputCustomMsg = document.getElementById('input-custom-msg');
   const customMessageGroup = document.getElementById('custom-message-group');
-  const linkPreviewBox = document.getElementById('link-preview-box');
   const btnShareWhatsapp = document.getElementById('btn-share-whatsapp');
   const btnCopyLink = document.getElementById('btn-copy-link');
   const btnShareNative = document.getElementById('btn-share-native');
@@ -282,10 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function updateGeneratedLink() {
-    const fullUrl = buildPersonalizedUrl();
-    if (linkPreviewBox) {
-      linkPreviewBox.textContent = fullUrl;
-    }
+    buildPersonalizedUrl();
   }
 
   // Handle Preset Dropdown change
@@ -343,7 +334,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         showToast('Link copied to clipboard! Share it with friends & family 🔗');
       } catch (err) {
-        showToast('Please copy the link from the preview box below!');
+        showToast('Link created! Please use the WhatsApp share button 💬');
       }
     });
   }
@@ -372,44 +363,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 8. GitHub Hosting Guide Modal
-  if (openGithubGuideBtn) {
-    openGithubGuideBtn.addEventListener('click', () => {
-      githubModal.classList.add('active');
+  // Close celebration modal when clicking backdrop or pressing Escape
+  if (celebrationModal) {
+    celebrationModal.addEventListener('click', (e) => {
+      if (e.target === celebrationModal) {
+        celebrationModal.classList.remove('active');
+      }
     });
   }
-
-  if (closeGithubBtn) {
-    closeGithubBtn.addEventListener('click', () => {
-      githubModal.classList.remove('active');
-    });
-  }
-
-  if (dismissGithubModalBtn) {
-    dismissGithubModalBtn.addEventListener('click', () => {
-      githubModal.classList.remove('active');
-    });
-  }
-
-  // Close modals when clicking backdrop or pressing Escape
-  [celebrationModal, githubModal].forEach(modal => {
-    if (modal) {
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-          modal.classList.remove('active');
-        }
-      });
-    }
-  });
 
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      celebrationModal.classList.remove('active');
-      githubModal.classList.remove('active');
+      if (celebrationModal) celebrationModal.classList.remove('active');
     }
   });
 
-  // 9. Toast Notification Helper
+  // Toast Notification Helper
   let toastTimer = null;
   function showToast(message) {
     if (!toastNotice) return;

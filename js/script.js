@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // DOM Elements
+  const mobileToggleBtn = document.getElementById('mobile-toggle-btn');
+  const mobileBtnText = document.getElementById('mobile-btn-text');
   const themeBtn = document.getElementById('theme-btn');
   const themeBtnLabel = document.getElementById('theme-btn-label');
   const soundBtn = document.getElementById('sound-btn');
@@ -377,6 +379,149 @@ document.addEventListener('DOMContentLoaded', () => {
       if (celebrationModal) celebrationModal.classList.remove('active');
     }
   });
+
+  // Auto Mobile Screen Toggle
+  if (mobileToggleBtn) {
+    mobileToggleBtn.addEventListener('click', () => {
+      const isMobile = document.body.classList.toggle('mobile-screen-mode');
+      if (isMobile) {
+        mobileToggleBtn.classList.add('active');
+        if (mobileBtnText) mobileBtnText.textContent = 'Desktop View';
+        showToast('📱 Auto Mobile Screen Activated! (Phone Frame)');
+      } else {
+        mobileToggleBtn.classList.remove('active');
+        if (mobileBtnText) mobileBtnText.textContent = 'Mobile View';
+        showToast('💻 Full Desktop Screen Restored');
+      }
+      if (window.fireworksEngine) {
+        setTimeout(() => window.fireworksEngine.resize(), 120);
+      }
+    });
+  }
+
+  // =========================================================================
+  // STRICT SECTION SCROLL CONTROLLER (Stops at Every Heading)
+  // =========================================================================
+  const snapSections = Array.from(document.querySelectorAll('.snap-section'));
+  const scrollDots = Array.from(document.querySelectorAll('.scroll-dot'));
+  let currentSectionIdx = 0;
+  let isScrollLocked = false;
+  let lockTimer = null;
+
+  function scrollToSection(idx) {
+    if (idx < 0 || idx >= snapSections.length) return;
+    isScrollLocked = true;
+    currentSectionIdx = idx;
+
+    const targetSec = snapSections[idx];
+    if (targetSec) {
+      targetSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    updateActiveDot(idx);
+
+    clearTimeout(lockTimer);
+    // Debounce duration ensures that even aggressive trackpad/wheel flings stop at each heading
+    lockTimer = setTimeout(() => {
+      isScrollLocked = false;
+    }, 750);
+  }
+
+  function updateActiveDot(idx) {
+    scrollDots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === idx);
+    });
+  }
+
+  // Intercept Wheel so scrolling stops at every heading no matter how hard you scroll
+  window.addEventListener('wheel', (e) => {
+    if (e.target.closest('select, textarea, input, .modal-content')) return;
+
+    e.preventDefault();
+
+    if (isScrollLocked) return;
+    if (Math.abs(e.deltaY) < 16) return;
+
+    if (e.deltaY > 0) {
+      if (currentSectionIdx < snapSections.length - 1) {
+        scrollToSection(currentSectionIdx + 1);
+      }
+    } else if (e.deltaY < 0) {
+      if (currentSectionIdx > 0) {
+        scrollToSection(currentSectionIdx - 1);
+      }
+    }
+  }, { passive: false });
+
+  // Touch Swipe Handling (stops at every heading)
+  let touchStartY = 0;
+  let touchStartX = 0;
+  window.addEventListener('touchstart', (e) => {
+    if (e.touches.length > 0) {
+      touchStartY = e.touches[0].clientY;
+      touchStartX = e.touches[0].clientX;
+    }
+  }, { passive: true });
+
+  window.addEventListener('touchend', (e) => {
+    if (isScrollLocked) return;
+    if (e.target.closest('select, textarea, input, .modal-content')) return;
+
+    if (e.changedTouches.length > 0) {
+      const deltaY = touchStartY - e.changedTouches[0].clientY;
+      const deltaX = touchStartX - e.changedTouches[0].clientX;
+
+      if (Math.abs(deltaY) > 40 && Math.abs(deltaY) > Math.abs(deltaX)) {
+        if (deltaY > 0 && currentSectionIdx < snapSections.length - 1) {
+          scrollToSection(currentSectionIdx + 1);
+        } else if (deltaY < 0 && currentSectionIdx > 0) {
+          scrollToSection(currentSectionIdx - 1);
+        }
+      }
+    }
+  }, { passive: true });
+
+  // Keyboard Arrow Keys (stops at every heading)
+  window.addEventListener('keydown', (e) => {
+    if (['input', 'textarea', 'select'].includes(document.activeElement.tagName.toLowerCase())) return;
+    if (isScrollLocked) return;
+
+    if (e.key === 'ArrowDown' || e.key === 'PageDown' || (e.key === ' ' && !e.shiftKey)) {
+      e.preventDefault();
+      if (currentSectionIdx < snapSections.length - 1) {
+        scrollToSection(currentSectionIdx + 1);
+      }
+    } else if (e.key === 'ArrowUp' || e.key === 'PageUp' || (e.key === ' ' && e.shiftKey)) {
+      e.preventDefault();
+      if (currentSectionIdx > 0) {
+        scrollToSection(currentSectionIdx - 1);
+      }
+    }
+  });
+
+  // Floating Dot Navigation Clicks
+  scrollDots.forEach((dot, idx) => {
+    dot.addEventListener('click', () => {
+      scrollToSection(idx);
+    });
+  });
+
+  // IntersectionObserver to sync dots when scrolling
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const idx = snapSections.indexOf(entry.target);
+          if (idx !== -1 && !isScrollLocked) {
+            currentSectionIdx = idx;
+            updateActiveDot(idx);
+          }
+        }
+      });
+    }, { threshold: 0.5 });
+
+    snapSections.forEach(sec => observer.observe(sec));
+  }
 
   // Toast Notification Helper
   let toastTimer = null;

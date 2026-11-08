@@ -42,6 +42,11 @@
       </div>
 
       <div class="nav-actions">
+        <!-- Auto Mobile Screen Toggle -->
+        <button id="mobile-toggle-btn" class="nav-btn" title="Toggle Auto Mobile Screen Frame">
+          <span>📱</span> <span id="mobile-btn-text">Mobile View</span>
+        </button>
+
         <!-- Theme Palette Switcher -->
         <button id="theme-btn" class="nav-btn" title="Change Festive Color Theme">
           <span>🎨</span> <span id="theme-btn-label">Royal Gold</span>
@@ -62,8 +67,23 @@
       </div>
     </header>
 
-    <!-- Hero Greetings Section -->
-    <main class="hero-section">
+    <!-- Dynamic Island / Camera Notch (Visible in Mobile Screen Mode) -->
+    <div class="phone-notch" id="phone-notch">
+      <div class="notch-lens"></div>
+      <div class="notch-speaker"></div>
+    </div>
+
+    <!-- Floating Section Snap Navigation Dots -->
+    <nav class="scroll-dots-nav" id="scroll-dots-nav" aria-label="Section Headings Navigation">
+      <button class="scroll-dot active" data-index="0" title="Shubh Deepavali (Hero)"><span class="dot-indicator"></span><span class="dot-label">Shubh Deepavali</span></button>
+      <button class="scroll-dot" data-index="1" title="Panch Deepam (5 Diyas)"><span class="dot-indicator"></span><span class="dot-label">Panch Deepam</span></button>
+      <button class="scroll-dot" data-index="2" title="The Four Divine Blessings"><span class="dot-indicator"></span><span class="dot-label">4 Blessings</span></button>
+      <button class="scroll-dot" data-index="3" title="Create Personalized Wish"><span class="dot-indicator"></span><span class="dot-label">Send Wish</span></button>
+      <button class="scroll-dot" data-index="4" title="Sacred Lights & Blessing"><span class="dot-indicator"></span><span class="dot-label">Sacred Lights</span></button>
+    </nav>
+
+    <!-- SECTION 1: Hero Greetings Section -->
+    <section class="snap-section hero-section" id="sec-hero">
       <!-- Sacred Sanskrit Shloka -->
       <div class="shloka-banner">
         <div class="shloka-sanskrit">ॐ असतो मा सद्गमय । तमसो मा ज्योतिर्गमय ।</div>
@@ -100,10 +120,10 @@
           With warmest festive wishes & blessings, <span id="sender-name">Diwali Well-Wishers</span>
         </div>
       </section>
-    </main>
+    </section>
 
-    <!-- SECTION 1: Panch Deepam (Interactive 5 Diyas Experience) -->
-    <section class="panch-deepam-section" id="panch-deepam">
+    <!-- SECTION 2: Panch Deepam (Interactive 5 Diyas Experience) -->
+    <section class="snap-section panch-deepam-section" id="sec-diyas">
       <div class="section-header">
         <span class="section-tag">Interactive Ritual</span>
         <h2 class="section-title">Panch Deepam • Light The Diyas</h2>
@@ -171,8 +191,8 @@
       </div>
     </section>
 
-    <!-- SECTION 2: The 4 Pillars & Blessings of Diwali -->
-    <section class="festive-cards-section">
+    <!-- SECTION 3: The 4 Pillars & Blessings of Diwali -->
+    <section class="snap-section festive-cards-section" id="sec-blessings">
       <div class="section-header">
         <span class="section-tag">Festive Significance</span>
         <h2 class="section-title">The Four Divine Blessings</h2>
@@ -214,8 +234,8 @@
       </div>
     </section>
 
-    <!-- SECTION 3: Personalized Wish Generator & Instant Sharing -->
-    <section class="wish-generator-section" id="wish-generator">
+    <!-- SECTION 4: Personalized Wish Generator & Instant Sharing -->
+    <section class="snap-section wish-generator-section" id="sec-wish">
       <div class="generator-card">
         <div class="section-header" style="margin-bottom: 15px;">
           <span class="section-tag">Spread The Light</span>
@@ -266,8 +286,8 @@
       </div>
     </section>
 
-    <!-- Festive Footer -->
-    <footer class="festive-footer">
+    <!-- SECTION 5: Festive Footer & Sacred Light -->
+    <footer class="snap-section festive-footer" id="sec-footer">
       <div class="footer-diya-row">
         <span>🪔</span><span>✨</span><span>🪔</span><span>✨</span><span>🪔</span>
       </div>
